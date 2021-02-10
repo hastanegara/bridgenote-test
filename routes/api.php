@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\API\LoginController;
+use App\Http\Controllers\API\UserPositionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login', [LoginController::class, 'login']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('logout', [LoginController::class, 'logout']);
+    Route::resource('user-position', UserPositionController::class)->except(['create', 'edit']);
 });

@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\API\LoginController;
 use App\Http\Controllers\API\UserPositionController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------

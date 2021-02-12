@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginController extends BaseController
 {
-    public function login(Request $request)
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function __invoke(Request $request)
     {
         $input = $request->all();
         $validator = Validator::make($input, [
@@ -29,13 +34,6 @@ class LoginController extends BaseController
         }
         else {
             return $this->sendError('Unauthorized', ['error' => 'Unauthorized']);
-        }
-    }
-
-    public function logout(Request $request)
-    {
-        if ($request->user()->token()->revoke()) {
-            return $this->sendResponse([], 'User logged out successfully');
         }
     }
 }

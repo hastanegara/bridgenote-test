@@ -1,14 +1,19 @@
 <template>
     <div class="container ">
         <div class="row justify-content-center">
+            <div class="col-12" v-if="error">
+                <div class="alert bg-danger text-white my-4 alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong> {{ error }}
+
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+
             <div class="col-md-4">
                 <div class="card card-default">
                     <div class="card-header">Login</div>
-                        <div v-if="error">
-                            <div class="alert bg-danger text-white m-4">
-                                {{ error }}
-                            </div>
-                        </div>
                         <div class="card-body">
 
                         <form @submit.prevent="submit">
@@ -52,7 +57,7 @@
                     this.$emit('setData')
                     this.$router.push({ name: 'dashboard' })
                 }).catch(error => {
-                    this.error = error.response.data.error
+                    this.error = error.response.data.message
                 })
             }
         }

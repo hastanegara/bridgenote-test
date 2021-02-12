@@ -10,7 +10,7 @@
                 <ul class="navbar-nav ml-auto">
                     <template v-if="isLoggedIn">
                         <li class="nav-item">
-                            <a class="nav-link"  @click="logout"> Logout</a>
+                            <a href="#" class="nav-link"  @click="logout"> Logout</a>
                         </li>
                     </template>
                 </ul>
